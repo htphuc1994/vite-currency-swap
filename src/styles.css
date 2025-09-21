@@ -1,0 +1,88 @@
+:root {
+    --bg: radial-gradient(1200px 600px at 10% 0%, rgba(59,130,246,.15), transparent 40%),
+    radial-gradient(1000px 600px at 90% 10%, rgba(236,72,153,.15), transparent 40%),
+    color-mix(in srgb, Canvas 90%, transparent);
+    --card-bg: color-mix(in srgb, Canvas 86%, black 6%);
+    --card-stroke: color-mix(in srgb, CanvasText 12%, transparent);
+    --accent: #7c5cff;
+    --accent-2: #2bd4bd;
+    --danger: #ef4444;
+    --ok: #22c55e;
+    --muted: color-mix(in srgb, CanvasText 60%, transparent);
+    --shadow: 0 20px 35px -15px rgba(0,0,0,.3);
+    --radius: 18px;
+}
+@media (prefers-color-scheme: dark) {
+    :root { --card-bg: color-mix(in srgb, Canvas 16%, white 4%); }
+}
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    background: var(--bg);
+    color: CanvasText;
+}
+.container { display: grid; place-items: center; min-height: 100%; padding: 24px; }
+.card {
+    width: min(720px, 100%);
+    background: var(--card-bg);
+    border: 1px solid var(--card-stroke);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: clamp(18px, 2.5vw, 32px);
+    backdrop-filter: blur(6px) saturate(115%);
+}
+.title { margin: 0 0 14px; font-weight: 800; letter-spacing: -0.02em; font-size: clamp(20px, 3vw, 30px); }
+.subtle { color: var(--muted); font-size: 14px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.stack { display: grid; gap: 10px; }
+.panel {
+    background: color-mix(in srgb, Canvas 92%, transparent);
+    border: 1px solid var(--card-stroke);
+    border-radius: calc(var(--radius) - 8px);
+    padding: 14px;
+}
+.label { font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; gap: 8px; }
+.amount { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px; }
+.amount input {
+    width: 100%; font-size: 24px; border: 0; background: none; color: inherit; outline: none; padding: 8px 0;
+}
+.token {
+    display: inline-grid; grid-auto-flow: column; gap: 8px; align-items: center;
+    border-radius: 12px; border: 1px solid var(--card-stroke);
+    padding: 8px 10px; background: color-mix(in srgb, Canvas 94%, transparent); cursor: pointer;
+}
+.token img { width: 20px; height: 20px; border-radius: 999px; }
+.chev { font-size: 12px; opacity: .7 }
+.btn {
+    appearance: none; border: 0; background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: white; padding: 12px 16px; border-radius: 12px; font-weight: 700; font-size: 16px; cursor: pointer;
+    transition: transform .05s ease, filter .2s ease; box-shadow: 0 10px 20px -10px rgba(124,92,255,.7);
+}
+.btn:disabled { filter: grayscale(.6) contrast(.8) opacity(.6); cursor: not-allowed; box-shadow: none; }
+.btn:active { transform: translateY(1px) }
+.btn.secondary { background: none; border: 1px solid var(--card-stroke); color: CanvasText; box-shadow: none; }
+.flip { display: grid; place-items: center; margin: -8px auto; }
+.flip button {
+    width: 36px; height: 36px; border-radius: 999px; border: 1px solid var(--card-stroke);
+    background: var(--card-bg); cursor: pointer;
+}
+.rate { display: flex; gap: 8px; align-items: center; justify-content: space-between; font-size: 14px; color: var(--muted); }
+.error { color: var(--danger); font-size: 13px; }
+.success { color: var(--ok); font-size: 14px; }
+/* Token picker */
+.picker {
+    position: absolute; z-index: 10; margin-top: 8px; width: 280px; max-height: 360px; overflow: auto;
+    border-radius: 12px; border: 1px solid var(--card-stroke); background: var(--card-bg); box-shadow: var(--shadow);
+}
+.picker input {
+    width: 100%; border: 0; outline: none; padding: 10px 12px; background: none; border-bottom: 1px solid var(--card-stroke); color: inherit;
+}
+.picker ul { list-style: none; margin: 0; padding: 6px; }
+.picker li {
+    display: grid; grid-template-columns: auto 1fr auto; gap: 8px; align-items: center;
+    padding: 8px 10px; border-radius: 10px; cursor: pointer;
+}
+.picker li:hover { background: color-mix(in srgb, Canvas 92%, transparent); }
+.badge { font-size: 12px; padding: 2px 6px; border-radius: 99px; border: 1px solid var(--card-stroke); }
