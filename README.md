@@ -10,6 +10,10 @@ Create a currency swap form based on the template provided in the folder. A user
 4. You may use this [repo](https://github.com/Switcheo/token-icons/tree/main/tokens) for token images, e.g. [SVG image](https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/SWTH.svg).
 5. You may use this [URL](https://interview.switcheo.com/prices.json) for token price information and to compute exchange rates (not every token has a price, those that do not can be omitted).
 
+# Notes: You can find the Problem 1 and 3 solutions under the root folder.
+## Problem 1- Three ways to sum to n.pdf and Problem 3- Messy React.pdf
+
+## Run Problem 2: Fancy Form
 ## Running the development server
 ```bash
 npm run dev
